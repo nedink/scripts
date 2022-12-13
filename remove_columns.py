@@ -24,9 +24,6 @@ output_file = sys.argv[2]
 # the indices are passed as strings, so we need to convert them to integers
 columns_to_remove = [int(i) for i in sys.argv[3:]]
 
-with open(input_file, "r") as input_csv:
-    num_rows = sum(1 for row in input_csv)
-
 # open the input and output files
 with open(input_file, "r") as input_csv, open(output_file, "w") as output_csv:
     # create a CSV reader and writer
@@ -34,7 +31,7 @@ with open(input_file, "r") as input_csv, open(output_file, "w") as output_csv:
     writer = csv.writer(output_csv)
 
     # create a progress bar with the total number of rows
-    pbar = tqdm(total=num_rows, desc="Processing rows")
+    pbar = tqdm(total=sum(1 for _ in input_csv), desc="Processing rows")
 
     # loop through each row in the input file
     for row in reader:
