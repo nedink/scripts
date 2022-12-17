@@ -28,8 +28,8 @@ with open(input_file, "r") as f:
         row
     ) in (
         reader
-    ):  # for each row, if every column from col_indexes is equal to val, increment count
-        if all([val == row[int(i)] for i in col_indexes]):
+    ):  # for each row, if any column from col_indexes is equal to val, increment count
+        if any([val == row[int(i)] for i in col_indexes]):
             count += 1
             rows.append(reader.line_num)
 

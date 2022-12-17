@@ -28,8 +28,8 @@ with open(input_file, "r") as f:
         row
     ) in (
         reader
-    ):  # for each row, if every column from col_indexes contains val, increment count
-        if all([val in row[int(i)] for i in col_indexes]):
+    ):  # for each row, if any column from col_indexes contains val, increment count
+        if any([val in row[int(i)] for i in col_indexes]):
             count += 1
             rows.append(reader.line_num)
         pbar.update()
